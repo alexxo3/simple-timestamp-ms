@@ -30,7 +30,7 @@ app.get('/api/:date?', (req, res) => {
   let date;
 
   if (dateParam) {
-      date = new Date(dateParam);
+      date = isNaN(dateParam) ? new Date(dateParam) : new Date(parseInt(dateParam));
   } else {
       date = new Date();
   }
@@ -44,6 +44,7 @@ app.get('/api/:date?', (req, res) => {
       utc: date.toUTCString()
   });
 });
+
 
 
 
